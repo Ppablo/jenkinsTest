@@ -122,7 +122,7 @@ pipeline {
             agent any
 
             environment {
-                    DOCKER_REPO = 'fercdevv/jenkins-node'
+                    DOCKER_REPO = 'ppablo1999/jenkinstest'
             }
 
             steps {
