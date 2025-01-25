@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         SONARQUBE_TOKEN = credentials('sonar-token')
-        CONTAINER_NAME_PROJECT = 'node_project'
+        CONTAINER_NAME_PROJECT = 'node_project_GiraldoPablo'
     }
 
     stages {
@@ -74,7 +74,7 @@ pipeline {
 
             environment {
                     DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials')
-                    DOCKER_REPO = 'fercdevv/jenkins-node'
+                    DOCKER_REPO = 'ppablo1999/jenkinstest'
             }
             steps {
                 sh '''
@@ -130,7 +130,7 @@ pipeline {
                     sh '''
                         ssh -o StrictHostKeyChecking=no root@142.93.115.84 "
                         docker pull $DOCKER_REPO:latest &&
-                        docker run -d --name node_project -p 8080:3000 $DOCKER_REPO:latest
+                        docker run -d --name node_project_GiraldoPablo -p 8083:3000 $DOCKER_REPO:latest
                         "
                     '''
                 }
@@ -140,7 +140,7 @@ pipeline {
 
     post {
         success {
-            mail to: 'lcruzfarfan@gmail.com',
+            mail to: 'giradomoran@gmail.com',
                  subject: "Pipeline ${env.JOB_NAME} ejecucion correcta",
                  body: """
                  Hola,
